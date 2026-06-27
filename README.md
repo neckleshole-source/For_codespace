@@ -120,4 +120,5 @@ Fraudulent examples are designed to cover a broad attack surface, including:
 ● Print-and-capture forgeries that suppress many fragile digital artifacts and close the "analog hole";
 
 ● combinations of physical, digital and recapture effects that require models to detect semantic, structural and physical inconsistencies rather than only pixel-level signatures.
+
 The dataset deliberately includes under-represented document types, scripts, layouts and languages to test cross-document generalization. Strong solutions should perform well across document domains rather than overfit to a small number of template-specific or generator-specific traces.
