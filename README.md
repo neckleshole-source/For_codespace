@@ -72,9 +72,13 @@ lower FREUID Score = better ranking
 The competition data will contain labeled training examples and unlabeled test examples.
 
 ● `train/` - training document images.
+
 ● `test/` - test document images for which participants submit predictions.
+
 ● `train.csv` - metadata for the training set, including the row id, image path, binary label, information if example is fully digital or recaptured and type of document.
+
 ● `test.csv` - metadata for the test set, including the row id and image path.
+
 ● `sample_submission.csv` - the required submission format.
 The row id column is the stable key used by Kaggle to align submissions with hidden labels during scoring.
 
@@ -110,7 +114,10 @@ Each sample represents an identity document image. The task is binary fraud dete
 Fraudulent examples are designed to cover a broad attack surface, including:
 
 ● Physical manipulations on printed and captured document substrates;
+
 ● GenAI-driven multimodal edits created with accessible text-and-image tools;
+
 ● Print-and-capture forgeries that suppress many fragile digital artifacts and close the "analog hole";
+
 ● combinations of physical, digital and recapture effects that require models to detect semantic, structural and physical inconsistencies rather than only pixel-level signatures.
 The dataset deliberately includes under-represented document types, scripts, layouts and languages to test cross-document generalization. Strong solutions should perform well across document domains rather than overfit to a small number of template-specific or generator-specific traces.
