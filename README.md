@@ -1,4 +1,4 @@
-#The FREUID Challenge 2026 - IJCAI-ECAI
+# The FREUID Challenge 2026 - IJCAI-ECAI
 Detect next-generation identity document fraud across physical manipulations, GenAI-driven digital edits, and print-and-capture attacks.
 Identity document fraud is changing quickly. Modern attackers can combine high-quality document templates, generative AI editing tools, physical print-and-capture workflows, and presentation attacks to create forgeries that do not look like the simple digital manipulations found in many existing benchmarks.
 
