@@ -3,3 +3,23 @@
 .dolt/
 *.db
 .beads-credential-key
+
+# FREUID competition data (large; downloaded via code/scripts/download_data.py)
+dataset/train/
+dataset/test/
+dataset/*.csv
+dataset/*.zip
+dataset/*.tar
+dataset/*.tar.gz
+
+# Training artifacts
+runs/
+checkpoints/
+*.pt
+*.pth
+__pycache__/
+*.pyc
+
+# Secrets / Kaggle creds
+.kaggle/
+

@@ -111,11 +111,14 @@ def freuid_score(
     g_apcer = 1.0 - p
 
     # Harmonic mean of the two goodness scores, mapped back to a "badness"
-    # score by 1 - HM. Guard the degenerate case where both goodness
-    # scores are exactly 0 (perfect on both axes).
+    # score by 1 - HM. Lower FREUID is better.
     denom = g_audet + g_apcer
     if denom <= 0.0:
-        return 0.0
+        # Both axes are completely wrong (perfectly useless model). The
+        # harmonic-mean interpretation is that FREUID should be at its
+        # worst value of 1.0; returning 0 would reward an entirely wrong
+        # model, which would invert the ranking.
+        return 1.0
     hm = 2.0 * g_audet * g_apcer / denom
     return float(1.0 - hm)
 
