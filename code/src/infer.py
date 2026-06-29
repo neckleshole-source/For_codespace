@@ -77,9 +77,15 @@ def write_submission(
     test ids missing from our predictions are filled with 0.5 (neutral);
     any extra predictions are appended at the end as a safety net.
     """
-    sample = pd.read_csv(sample_submission_csv)
+    sample = pd.read_csv(sample_submission_csv, dtype={"id": str})
     sample["id"] = sample["id"].astype(str)
-    pred_df = pd.DataFrame({"id": [str(i) for i in ids], "label": scores.astype(float)})
+    # Zero-pad prediction ids to match sample-submission width when they look
+    # like integers (e.g. test.csv has id=1, but sample uses "000001").
+    pad_to = max(len(s) for s in sample["id"]) if len(sample) else 0
+    pred_ids = [str(i) for i in ids]
+    if pad_to and any(p.isdigit() and len(p) < pad_to for p in pred_ids):
+        pred_ids = [p.zfill(pad_to) if p.isdigit() else p for p in pred_ids]
+    pred_df = pd.DataFrame({"id": pred_ids, "label": scores.astype(float)})
     out = sample[["id"]].merge(pred_df, on="id", how="left")
     if out["label"].isna().any():
         missing = out["label"].isna().sum()
